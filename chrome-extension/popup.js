@@ -1,37 +1,49 @@
-// popup.js - basic script for demonstration purposes
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Example: Simulate loading a job title and ATS score
-    document.querySelector('#job-title span').textContent = "Software Engineer";
-    document.querySelector('#ats-score span').textContent = "85/100";
-    
-    // Populate suggestions (this would be replaced with real data)
-    const suggestions = [
-      "Include relevant keywords for ATS.",
-      "Quantify your achievements with numbers.",
-      "Use clear, concise bullet points."
-    ];
+  // Function to simulate dynamic job analysis
+  function simulateJobAnalysis() {
+    const jobData = {
+      title: "Frontend Developer",
+      atsScore: "90/100",
+      suggestions: [
+        "Add React experience details.",
+        "Include recent project links.",
+        "Quantify achievements with numbers."
+      ]
+    };
+
+    // Update job title and ATS score
+    document.querySelector('#job-title span').textContent = jobData.title;
+    document.querySelector('#ats-score span').textContent = jobData.atsScore;
+
+    // Update suggestions list
     const suggestionsList = document.getElementById('suggestions-list');
-    suggestions.forEach(suggestion => {
+    suggestionsList.innerHTML = ""; // Clear current suggestions
+    jobData.suggestions.forEach(suggestion => {
       const li = document.createElement('li');
       li.textContent = suggestion;
       
-      // Add a smart copy icon for each suggestion
-      const copyIcon = document.createElement('button');
-      copyIcon.textContent = "Copy";
-      copyIcon.style.marginLeft = "10px";
-      copyIcon.addEventListener('click', () => {
+      // Add a minimal copy button
+      const copyBtn = document.createElement('button');
+      copyBtn.classList.add('copy-btn');
+      copyBtn.textContent = "Copy";
+      copyBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(suggestion);
       });
-      li.appendChild(copyIcon);
+      li.appendChild(copyBtn);
       
       suggestionsList.appendChild(li);
     });
-    
-    // Event listener for cover letter generation button
-    document.getElementById('generate-cover-letter').addEventListener('click', () => {
-      // This is where you would call your Gemini AI API integration
-      alert("Generating cover letter...");
-    });
+  }
+
+  // Set initial placeholder data
+  document.querySelector('#job-title span').textContent = "Loading...";
+  document.querySelector('#ats-score span').textContent = "--";
+
+  // Simulate fetching dynamic data after 2 seconds
+  setTimeout(simulateJobAnalysis, 2000);
+
+  // Event listener for cover letter generation button
+  document.getElementById('generate-cover-letter').addEventListener('click', () => {
+    alert("Generating cover letter...");
   });
-  
+});
