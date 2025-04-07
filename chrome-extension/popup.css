@@ -1,0 +1,59 @@
+/* Basic styling for a clean, modern look */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #FAFAFA;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  header .logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+  }
+  
+  main {
+    padding: 15px;
+  }
+  
+  h1, h2, h3 {
+    margin: 0;
+  }
+  
+  #job-info {
+    margin-bottom: 15px;
+  }
+  
+  #ats-score {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  button {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+  }
+  

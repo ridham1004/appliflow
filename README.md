@@ -18,7 +18,6 @@
 - 📋 Copy-paste ready Workday experience entries
 - 🧾 Auto-formatted date ranges for application portals
 - 📄 Drag and drop PDF/Word files directly into job applications
-- ✨ Aesthetic, Gemini-inspired UI
 
 ### 🔹 Website Dashboard
 - 🔐 Google login + Drive integration

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AppliFlow Extension</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="AppliFlow Logo" class="logo">
+    <h1>AppliFlow</h1>
+  </header>
+  <main>
+    <div id="job-info">
+      <h2>Job-Specific Analysis</h2>
+      <p id="job-title">Job Title: <span>Loading...</span></p>
+      <div id="ats-score">ATS Score: <span>--</span></div>
+      <div id="suggestions">
+        <h3>Suggestions:</h3>
+        <ul id="suggestions-list">
+          <!-- Dynamic suggestions will appear here -->
+        </ul>
+      </div>
+    </div>
+    <button id="generate-cover-letter">Generate Cover Letter</button>
+  </main>
+  <footer>
+    <a href="https://yourwebsite.com" target="_blank">View Full Dashboard</a>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>
