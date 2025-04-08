@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #FAFAFA;
+    color: #333;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .App-nav {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+  }
+  
+  .App-nav ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .App-nav li {
+    display: inline;
+    margin-right: 15px;
+  }
+  
+  .App-nav a {
+    text-decoration: none;
+    color: #2575fc;
+  }
+  
+  .App-nav a:hover {
+    color: #6a11cb;
+  }
+  
