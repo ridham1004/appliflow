@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "dependencies": {
+        "appliflow-website": "file:",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^7.5.0",

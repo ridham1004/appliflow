@@ -1,16 +1,34 @@
 import React from 'react';
 
 function JobTracker() {
-  // For now, we simply return static content.
+  // Sample job data; later, this could come from an API or state
+  const jobs = [
+    { id: 1, title: 'Software Engineer', company: 'Tech Corp', status: 'Applied' },
+    { id: 2, title: 'Frontend Developer', company: 'Web Solutions', status: 'Interview' },
+    { id: 3, title: 'Backend Developer', company: 'Data Systems', status: 'Pending' }
+  ];
+
   return (
     <div style={{ padding: '20px' }}>
       <h2>Job Tracker</h2>
-      <p>This is where your list of job applications will be displayed.</p>
-      <ul>
-        <li>Software Engineer - Tech Corp (Applied)</li>
-        <li>Frontend Developer - Web Solutions (Interview)</li>
-        <li>Backend Developer - Data Systems (Pending)</li>
-      </ul>
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <thead>
+          <tr style={{ borderBottom: '1px solid #ddd' }}>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Job Title</th>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Company</th>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {jobs.map(job => (
+            <tr key={job.id} style={{ borderBottom: '1px solid #eee' }}>
+              <td style={{ padding: '8px' }}>{job.title}</td>
+              <td style={{ padding: '8px' }}>{job.company}</td>
+              <td style={{ padding: '8px' }}>{job.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
