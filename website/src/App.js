@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import JobTracker from './components/JobTracker';
 import Documents from './components/Documents';
@@ -15,29 +15,47 @@ function Home() {
 }
 
 function App() {
+  // Use a lazy initializer to persist theme across refreshes
+  const [theme, setTheme] = useState(() => localStorage.getItem('appliflowTheme') || 'light');
+
+  // Save theme in localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem('appliflowTheme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
     <Router>
-      <div className="App">
+      <div className={`App ${theme}`}>
         {/* Navigation Bar */}
-        <nav className="App-nav" style={{ padding: '10px', borderBottom: '1px solid #ddd' }}>
-          <img src="/logo192.png" alt="AppliFlow Logo" style={{ width: '40px', height: '40px', verticalAlign: 'middle' }} />
-          <span style={{ fontSize: '1.5em', marginLeft: '10px' }}>AppliFlow</span>
-          <ul style={{ listStyleType: 'none', display: 'inline', marginLeft: '30px' }}>
-            <li style={{ display: 'inline', marginRight: '15px' }}>
+        <nav className="App-nav">
+          <div className="nav-left">
+            <img src="/logo192.png" alt="AppliFlow Logo" className="App-logo" />
+            <span className="nav-title">AppliFlow</span>
+          </div>
+          <ul className="nav-links">
+            <li>
               <Link to="/">Home</Link>
             </li>
-            <li style={{ display: 'inline', marginRight: '15px' }}>
+            <li>
               <Link to="/job-tracker">Job Tracker</Link>
             </li>
-            <li style={{ display: 'inline', marginRight: '15px' }}>
+            <li>
               <Link to="/documents">Documents</Link>
             </li>
-            <li style={{ display: 'inline', marginRight: '15px' }}>
+            <li>
               <Link to="/settings">Settings</Link>
             </li>
           </ul>
+          <div className="nav-right">
+            <button onClick={toggleTheme} className="theme-toggle">
+              {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+            </button>
+          </div>
         </nav>
-
         {/* Routes */}
         <Routes>
           <Route path="/" element={<Home />} />
