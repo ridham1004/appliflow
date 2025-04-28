@@ -1,67 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+// src/App.js
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import Login      from './components/Login';
 import JobTracker from './components/JobTracker';
-import Documents from './components/Documents';
-import Settings from './components/Settings';
+import Documents  from './components/Documents';
+import Settings   from './components/Settings';
 import './App.css';
 
-function Home() {
-  return (
-    <div style={{ padding: '20px' }}>
-      <h1>Welcome to AppliFlow Dashboard</h1>
-      <p>Use the navigation above to manage your job applications.</p>
-    </div>
-  );
-}
-
 function App() {
-  // Use a lazy initializer to persist theme across refreshes
-  const [theme, setTheme] = useState(() => localStorage.getItem('appliflowTheme') || 'light');
+  // Load existing token (if any) from localStorage
+  const [token, setToken] = useState(() => localStorage.getItem('token'));
 
-  // Save theme in localStorage when it changes
-  useEffect(() => {
-    localStorage.setItem('appliflowTheme', theme);
-  }, [theme]);
+  // If no token, show the Login screen
+  if (!token) {
+    return <Login onLogin={token => {
+      localStorage.setItem('token', token);
+      setToken(token);
+    }} />;
+  }
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+  // Logout helper
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setToken(null);
   };
 
   return (
     <Router>
-      <div className={`App ${theme}`}>
+      <div className="App">
         {/* Navigation Bar */}
         <nav className="App-nav">
           <div className="nav-left">
-            <img src="/logo192.png" alt="AppliFlow Logo" className="App-logo" />
             <span className="nav-title">AppliFlow</span>
           </div>
           <ul className="nav-links">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/job-tracker">Job Tracker</Link>
-            </li>
-            <li>
-              <Link to="/documents">Documents</Link>
-            </li>
-            <li>
-              <Link to="/settings">Settings</Link>
-            </li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/job-tracker">Job Tracker</Link></li>
+            <li><Link to="/documents">Documents</Link></li>
+            <li><Link to="/settings">Settings</Link></li>
           </ul>
           <div className="nav-right">
-            <button onClick={toggleTheme} className="theme-toggle">
-              {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+            <button onClick={handleLogout} className="theme-toggle">
+              Logout
             </button>
           </div>
         </nav>
+
         {/* Routes */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/job-tracker" element={<JobTracker />} />
-          <Route path="/documents" element={<Documents />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/" element={<JobTracker token={token} />} />
+          <Route path="/job-tracker" element={<JobTracker token={token} />} />
+          <Route path="/documents"  element={<Documents token={token} />} />
+          <Route path="/settings"   element={<Settings token={token} />} />
+          {/* Redirect any unknown route back to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </Router>
