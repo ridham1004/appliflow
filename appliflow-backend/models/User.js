@@ -8,7 +8,9 @@ const UserSchema = new mongoose.Schema({
   password:           { type: String, required: true },
   googleId:           { type: String },
   appliFlowFolderId:  { type: String },     // Google Drive folder ID
-  createdAt:          { type: Date,   default: Date.now }
+  createdAt:          { type: Date,   default: Date.now },
+  googleAccessToken:  { type: String },
+  googleRefreshToken: { type: String },
 });
 
 module.exports = mongoose.model('User', UserSchema);

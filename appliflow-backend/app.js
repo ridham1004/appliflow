@@ -14,6 +14,9 @@ const authMiddleware  = require('./middleware/authMiddleware');
 
 const app = express();
 
+// after your other requires:
+const aiRoutes = require('./routes/aiRoutes')
+
 // Connect to MongoDB
 connectDB();
 
@@ -26,6 +29,8 @@ app.use('/api/auth', authRoutes);
 
 // Protected routes (must pass authMiddleware)
 app.use('/api/jobs', authMiddleware, jobRoutes);
+
+app.use('/api/ai', aiRoutes);
 
 // A simple health-check or landing route
 app.get('/', (req, res) => {

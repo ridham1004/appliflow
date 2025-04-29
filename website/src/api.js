@@ -36,3 +36,22 @@ export async function fetchJobs(token) {
   if (!res.ok) throw new Error('Failed to fetch jobs');
   return res.json();
 }
+
+/**
+ * Create a new job.
+ */
+export async function createJob(token, jobData) {
+    const res = await fetch(`${API_URL}/jobs`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(jobData)
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.msg || 'Failed to create job');
+    }
+    return res.json();
+  }
