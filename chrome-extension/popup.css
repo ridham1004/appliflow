@@ -1,73 +1,103 @@
-/* Basic styling for a clean, modern look */
+/* popup.css */
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #FAFAFA;
+  width: 400px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  padding: 0;
-  color: #333;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
 }
-
-header {
+.header {
   display: flex;
   align-items: center;
-  padding: 10px;
-  background: #fff;
+  padding: 8px;
   border-bottom: 1px solid #ddd;
+  position: relative;
 }
-
-header .logo {
+.logo {
   width: 32px;
   height: 32px;
-  margin-right: 10px;
+  margin-right: 8px;
 }
-
-main {
-  padding: 15px;
-}
-
-h1, h2, h3 {
+.header h1 {
+  flex: 1;
+  font-size: 1.1em;
   margin: 0;
 }
-
-#job-info {
-  margin-bottom: 15px;
-}
-
-#ats-score {
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-button {
-  background: linear-gradient(90deg, #6a11cb, #2575fc);
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-footer {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 0.9em;
-}
-
-/* Minimal copy button styling */
-.copy-btn {
+.window-controls button {
   background: none;
   border: none;
-  color: #2575fc;
-  font-size: 10px;
-  padding: 2px 4px;
+  font-size: 1.2em;
+  margin-left: 4px;
   cursor: pointer;
-  text-decoration: underline;
 }
-
-.copy-btn:hover {
-  color: #6a11cb;
+.ats-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  margin: 8px;
+  background: #e0e0e0;
+  border-radius: 20px;
+}
+.exp-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 8px;
+}
+.experience-item {
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+}
+.experience-item h4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+.regen {
+  cursor: pointer;
+  font-size: 0.9em;
+}
+.footer-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+.footer-actions button {
+  flex: 1;
+  margin: 0 4px;
+  padding: 6px;
+  border: none;
+  background-color: #2575fc;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#docs-ui {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#docs-ui button {
+  padding: 8px;
+  border: none;
+  background-color: #2575fc;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#resume-upload {
+  width: 100%;
+  margin: 8px 0;
+}
+#btn-upload-resume {
+  padding: 6px 12px;
+  border: none;
+  background-color: #555;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 12px;
 }

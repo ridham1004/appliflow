@@ -1,22 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "AppliFlow Extension",
-  "version": "1.0",
-  "description": "Streamline job applications with tailored resume and cover letter enhancements.",
+  "name": "AppliFlow Assistant",
+  "version": "1.0.0",
+  "description": "Context-aware AI helpers (ATS on job pages, Impact/Cover on Google Docs)",
+  "permissions": ["storage","activeTab","scripting"],
+  "host_permissions": ["http://localhost:5000/*"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
+      "16": "icons/logo.png",
+      "48": "icons/logo.png",
+      "128": "icons/logo.png"
     }
   },
-  "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
-  ],
-  "host_permissions": [
-    "*://*/*"
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
   ]
 }

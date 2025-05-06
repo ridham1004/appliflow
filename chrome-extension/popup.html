@@ -2,31 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AppliFlow Extension</title>
+  <title>AppliFlow Assistant</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <header>
-    <img src="icons/icon48.png" alt="AppliFlow Logo" class="logo">
+  <!-- Header with Hide & Close -->
+  <header class="header">
+    <img src="icons/logo.png" alt="AppliFlow" class="logo">
     <h1>AppliFlow</h1>
-  </header>
-  <main>
-    <div id="job-info">
-      <h2>Job-Specific Analysis</h2>
-      <p id="job-title">Job Title: <span>Loading...</span></p>
-      <div id="ats-score">ATS Score: <span>--</span></div>
-      <div id="suggestions">
-        <h3>Suggestions:</h3>
-        <ul id="suggestions-list">
-          <!-- Dynamic suggestions will appear here -->
-        </ul>
-      </div>
+    <div class="window-controls">
+      <button id="btn-hide" title="Minimize">—</button>
+      <button id="btn-close" title="Close">✕</button>
     </div>
-    <button id="generate-cover-letter">Generate Cover Letter</button>
-  </main>
-  <footer>
-    <a href="https://yourwebsite.com" target="_blank">View Full Dashboard</a>
-  </footer>
+  </header>
+
+  <!-- Job Page UI -->
+  <section id="job-ui" hidden>
+     <!-- Resume Upload -->
+   <label for="resume-upload">Upload Resume:</label>
+   <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" />
+   <button id="btn-upload-resume">Load Resume</button>
+    <div id="ats-pill" class="ats-pill"></div>
+    <div id="experiences" class="exp-container"></div>
+    <div class="footer-actions">
+      <button id="btn-reset">Reset</button>
+      <button id="btn-save">Save Job</button>
+    </div>
+  </section>
+
+  <!-- Docs Page UI -->
+  <section id="docs-ui" hidden>
+    <button id="btn-generate-impact">Generate Impact</button>
+    <button id="btn-generate-cover">Generate Cover Letter</button>
+  </section>
+
+  <!-- Fallback UI -->
+  <section id="fallback-ui" hidden>
+    <p>No supported context detected.</p>
+  </section>
+
   <script src="popup.js"></script>
 </body>
 </html>

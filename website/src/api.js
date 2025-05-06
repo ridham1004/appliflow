@@ -55,3 +55,48 @@ export async function createJob(token, jobData) {
     }
     return res.json();
   }
+
+  export async function getAtsScore(token, resumeText, jobDescription) {
+    const res = await fetch(`${API_URL}/ai/ats`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ resumeText, jobDescription })
+    });
+    if (!res.ok) throw new Error((await res.json()).msg);
+    return res.json();  // { score, suggestions }
+  }
+  
+  /**
+   * Generate impact bullets
+   */
+  export async function getImpact(token, experienceText, bulletsCount) {
+    const res = await fetch(`${API_URL}/ai/impact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ experienceText, bulletsCount })
+    });
+    if (!res.ok) throw new Error((await res.json()).msg);
+    return res.json();  // [string, ...]
+  }
+  
+  /**
+   * Generate a cover letter
+   */
+  export async function getCoverLetter(token, resumeText, jobDescription, jobType) {
+    const res = await fetch(`${API_URL}/ai/coverletter`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ resumeText, jobDescription, jobType })
+    });
+    if (!res.ok) throw new Error((await res.json()).msg);
+    return res.json();  // { coverLetter }
+  }
