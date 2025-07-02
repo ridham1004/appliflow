@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useUser } from "@/context/UserContext";
 
-export default function ResumeUploader() {
+export default function ResumeUploader({ onUploadSuccess }: { onUploadSuccess: () => void }) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { user } = useUser();
   const [status, setStatus] = useState<string | null>(null);
@@ -47,12 +47,17 @@ export default function ResumeUploader() {
       setStatus("DB insert failed: " + dbError.message);
     } else {
       setStatus("Upload successful!");
+      if (onUploadSuccess) {
+        onUploadSuccess();
+      }
+      if(fileInputRef.current) fileInputRef.current.value = "";
     }
     setUploading(false);
   };
 
   return (
     <form onSubmit={handleUpload} style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 320 }}>
+      <h4>Upload a New Resume</h4>
       <input ref={fileInputRef} type="file" accept=".pdf,.doc,.docx" />
       <button type="submit" disabled={uploading}>
         {uploading ? "Uploading..." : "Upload Resume"}

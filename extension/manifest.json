@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "AppliFlow Helper",
+  "version": "0.1.0",
+  "description": "Scrape job descriptions and match resumes with AppliFlow.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+} 
