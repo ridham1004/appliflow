@@ -5,7 +5,7 @@
 
 ## ✨ What is AppliFlow?
 
-**AppliFlow** is a Chrome extension and companion web app designed to make job applications fast, smart, and effortless. With Gemini AI, Google Docs integration, and ATS optimization tools, AppliFlow helps you tailor resumes and cover letters directly to job descriptions—no copy-paste chaos, no formatting headaches.
+**AppliFlow** is a Chrome extension and companion web app designed to make job applications fast, smart, and effortless. With Gemini AI, Google Docs integration, and ATS optimization tools, AppliFlow helps you tailor resumes and cover letters directly to job descriptions - no copy-paste chaos, no formatting headaches.
 
 ---
 
